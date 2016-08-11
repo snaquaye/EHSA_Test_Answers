@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Dairy App</title>
+</head>
+
+<body ng-app="diaryApp">
+
+  <div ng-controller="DairyController">
+    <form ng-submit="actions.add()">
+      <div>
+        <label for="title">Title</label><br>
+        <input name="title" type="text" ng-model="viewData.entry.title">
+      </div><br>
+      <div>
+        <label for="entry">Entry</label><br>
+        <textarea name="entry" id="entry" cols="30" rows="10" ng-model="viewData.entry.entry"></textarea>
+      </div><br>
+
+      <button type="submit">Save Entry</button>
+    </form>
+
+    <h2>Entries</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Entry Title</th>
+          <th>Entry</th>
+          <th>Entry Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="entry in viewData.entries">
+          <td>{{entry.change.doc.title}}</td>
+          <td>{{entry.change.doc.entry}}</td>
+          <td>{{entry.change.doc._id | date}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="node_modules/angular/angular.js"></script>
+  <script src="node_modules/angular-pouchdb/dist/angular-pouchdb.js"></script>
+  <script src="node_modules/pouchdb/dist/pouchdb.js"></script>
+  <script src="script/app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1 @@
+I would start transversing from the left to right, taking each parent node, looking for child nodes, then transversing each child node to find nested nodes.
